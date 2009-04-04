@@ -1,0 +1,12 @@
+--- 
+abstract: PerlTidy in Dist::Zilla
+author: 
+  - Fayland Lam
+generated_by: Dist::Zilla::Plugin::MetaYaml version 1.004
+license: perl
+name: Dist-Zilla-Plugin-Perltidy
+requires: 
+  File::Copy: 0
+  File::Next: 0
+  Perl::Tidy: 0
+version: 0.01

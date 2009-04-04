@@ -1,0 +1,8 @@
+LICENSE
+MANIFEST
+META.yml
+README
+dist.ini
+lib/Dist/Zilla/App/Command/perltidy.pm
+lib/Dist/Zilla/Plugin/PerlTidy.pm
+t/00-load.t
