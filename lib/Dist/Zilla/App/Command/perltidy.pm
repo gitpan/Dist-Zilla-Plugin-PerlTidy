@@ -1,5 +1,5 @@
 package Dist::Zilla::App::Command::perltidy;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use strict;
 use warnings;
