@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::PerlTidy;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 # ABSTRACT: PerlTidy in Dist::Zilla
 

@@ -4,10 +4,10 @@ author:
   - Fayland Lam
 generated_by: Dist::Zilla::Plugin::MetaYaml version 1.004
 license: perl
-name: Dist-Zilla-Plugin-Perltidy
+name: Dist-Zilla-Plugin-PerlTidy
 requires: 
   Dist::Zilla: 1.004
   File::Copy: 0
   File::Next: 0
   Perl::Tidy: 0
-version: 0.03
+version: 0.04

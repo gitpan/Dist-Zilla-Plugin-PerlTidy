@@ -5,11 +5,11 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-  DISTNAME  => 'Dist-Zilla-Plugin-Perltidy',
-  NAME      => 'Dist::Zilla::Plugin::Perltidy',
+  DISTNAME  => 'Dist-Zilla-Plugin-PerlTidy',
+  NAME      => 'Dist::Zilla::Plugin::PerlTidy',
   AUTHOR    => 'Fayland\ Lam',
   ABSTRACT  => 'PerlTidy in Dist::Zilla',
-  VERSION   => '0.03',
+  VERSION   => '0.04',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.21) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {
