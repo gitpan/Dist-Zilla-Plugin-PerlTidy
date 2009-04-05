@@ -10,4 +10,4 @@ requires:
   File::Copy: 0
   File::Next: 0
   Perl::Tidy: 0
-version: 0.02
+version: 0.03

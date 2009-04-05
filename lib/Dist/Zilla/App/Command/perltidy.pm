@@ -1,5 +1,5 @@
 package Dist::Zilla::App::Command::perltidy;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use warnings;
 # ABSTRACT: perltidy your dist
 use Dist::Zilla::App -command;
 
-sub abstract { 'perltidy your dist' }
+sub abstract {'perltidy your dist'}
 
 sub run {
     my ( $self, $opt, $arg ) = @_;
@@ -15,12 +15,17 @@ sub run {
     my $perltidyrc;
     if ( scalar @$arg and -e $arg->[0] ) {
         $perltidyrc = $arg->[0];
+    } else {
+        my $config = $self->app->config_for('Dist::Zilla::Plugin::PerlTidy');
+        if ( exists $config->{perltidyrc} ) {
+            if ( -e $config->{perltidyrc} ) {
+                $perltidyrc = $config->{perltidyrc};
+            } else {
+                warn "perltidyrc $config->{perltidyrc} is not found\n";
+            }
+        }
+        $perltidyrc ||= $ENV{PERLTIDYRC};
     }
-
-# XXX? TODO
-#    my $config = $self->config;
-#    $perltidyrc = ( exists $config->{perltidyrc} and -e $config->{perltidyrc} ) ?
-#        $config->{perltidyrc} : undef;
 
     # make Perl::Tidy happy
     local @ARGV = ();
@@ -57,13 +62,29 @@ Dist::Zilla::App::Command::perltidy - perltidy a dist
     # OR
     $ dzil perltidy .myperltidyrc
 
+=head1 perltidyrc
+
+=head2 dzil config
+
+In your global dzil setting (which is '~/.dzil' or '~/.dzil/config'), you can config the
+ perltidyrc like:
+
+    [PerlTidy]
+    perltidyrc = /home/fayland/somewhere/.perltidyrc
+
+=head2 ENV PERLTIDYRC
+
+If you do not config the dzil, we will fall back to ENV PERLTIDYRC
+
+    export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
+
 =head1 AUTHOR
 
 Fayland Lam, C<< E<lt>fayland@gmail.comE<gt> >>
 
 =head1 COPYRIGHT
 
-Copyright 2008, Fayland Lam.
+Copyright 2009, Fayland Lam.
 
 This program is free software; you may redistribute it and/or modify it under
 the same terms as Perl itself.
