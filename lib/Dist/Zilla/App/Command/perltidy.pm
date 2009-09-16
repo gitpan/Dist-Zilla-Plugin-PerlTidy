@@ -1,4 +1,5 @@
 package Dist::Zilla::App::Command::perltidy;
+our $VERSION = '0.06';
 
 use strict;
 use warnings;
@@ -51,15 +52,36 @@ sub execute {
 1;
 __END__
 
+
+
 =head1 NAME
 
-Dist::Zilla::App::Command::perltidy - perltidy a dist
+Dist::Zilla::App::Command::perltidy - perltidy your dist
+
+=head1 VERSION
+
+version 0.06
 
 =head1 SYNOPSIS
 
     $ dzil perltidy
     # OR
     $ dzil perltidy .myperltidyrc
+
+=head1 AUTHOR
+
+  Fayland Lam <fayland@gmail.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2009 by Fayland Lam.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as perl itself.
+
+=head1 NAME
+
+Dist::Zilla::App::Command::perltidy - perltidy a dist
 
 =head1 perltidyrc
 
@@ -87,3 +109,6 @@ Copyright 2009, Fayland Lam.
 
 This program is free software; you may redistribute it and/or modify it under
 the same terms as Perl itself.
+
+
+__END__

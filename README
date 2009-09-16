@@ -1,6 +1,9 @@
 NAME
     Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
+VERSION
+    version 0.06
+
 SYNOPSIS
         # dist.ini
         [PerlTidy]
@@ -8,6 +11,18 @@ SYNOPSIS
         # or
         [PerlTidy]
         perltidyrc = xt/.perltidyrc
+
+AUTHOR
+      Fayland Lam <fayland@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2009 by Fayland Lam.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as perl itself.
+
+NAME
+    Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 perltidyrc
   dist.ini
@@ -34,4 +49,6 @@ COPYRIGHT
 
     This program is free software; you may redistribute it and/or modify it
     under the same terms as Perl itself.
+
+    __END__
 
