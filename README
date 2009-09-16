@@ -1,12 +1,37 @@
+NAME
+    Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
+SYNOPSIS
+        # dist.ini
+        [PerlTidy]
 
-This archive contains the distribution Dist-Zilla-Plugin-PerlTidy, version
-0.04:
+        # or
+        [PerlTidy]
+        perltidyrc = xt/.perltidyrc
 
-  PerlTidy in Dist::Zilla
+perltidyrc
+  dist.ini
+        [PerlTidy]
+        perltidyrc = xt/.perltidyrc
 
-This software is copyright (c) 2009 by Fayland Lam.
+  dzil config
+    In your global dzil setting (which is '~/.dzil' or '~/.dzil/config'),
+    you can config the perltidyrc like:
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+        [PerlTidy]
+        perltidyrc = /home/fayland/somewhere/.perltidyrc
+
+  ENV PERLTIDYRC
+    If you do not config like above, we will fall back to ENV PERLTIDYRC
+
+        export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
+
+AUTHOR
+    Fayland Lam, "<fayland@gmail.com>"
+
+COPYRIGHT
+    Copyright 2009, Fayland Lam.
+
+    This program is free software; you may redistribute it and/or modify it
+    under the same terms as Perl itself.
 

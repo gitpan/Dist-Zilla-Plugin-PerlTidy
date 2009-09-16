@@ -1,5 +1,4 @@
 package Dist::Zilla::App::Command::perltidy;
-our $VERSION = '0.04';
 
 use strict;
 use warnings;
@@ -9,7 +8,7 @@ use Dist::Zilla::App -command;
 
 sub abstract {'perltidy your dist'}
 
-sub run {
+sub execute {
     my ( $self, $opt, $arg ) = @_;
 
     my $perltidyrc;

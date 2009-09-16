@@ -1,12 +1,11 @@
 package Dist::Zilla::Plugin::PerlTidy;
-our $VERSION = '0.04';
 
 # ABSTRACT: PerlTidy in Dist::Zilla
 
 use Moose;
 with 'Dist::Zilla::Role::FileMunger';
 
-has 'perltidyrc';
+has 'perltidyrc' => ( is => 'rw' );
 
 sub munge_file {
     my ( $self, $file ) = @_;

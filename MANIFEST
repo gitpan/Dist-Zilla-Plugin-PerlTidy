@@ -7,3 +7,5 @@ dist.ini
 lib/Dist/Zilla/App/Command/perltidy.pm
 lib/Dist/Zilla/Plugin/PerlTidy.pm
 t/00-load.t
+xt/release/pod-coverage.t
+xt/release/pod-syntax.t
