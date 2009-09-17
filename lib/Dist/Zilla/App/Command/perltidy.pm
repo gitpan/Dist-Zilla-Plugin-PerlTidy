@@ -1,5 +1,5 @@
 package Dist::Zilla::App::Command::perltidy;
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 use strict;
 use warnings;
@@ -50,9 +50,8 @@ sub execute {
 }
 
 1;
+
 __END__
-
-
 
 =head1 NAME
 
@@ -60,13 +59,29 @@ Dist::Zilla::App::Command::perltidy - perltidy your dist
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
     $ dzil perltidy
     # OR
     $ dzil perltidy .myperltidyrc
+
+=head2 perltidyrc
+
+=head3 dzil config
+
+In your global dzil setting (which is '~/.dzil' or '~/.dzil/config.ini'), you can config the
+ perltidyrc like:
+
+    [PerlTidy]
+    perltidyrc = /home/fayland/somewhere/.perltidyrc
+
+=head3 ENV PERLTIDYRC
+
+If you do not config the dzil, we will fall back to ENV PERLTIDYRC
+
+    export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
 
 =head1 AUTHOR
 
@@ -78,37 +93,3 @@ This software is copyright (c) 2009 by Fayland Lam.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as perl itself.
-
-=head1 NAME
-
-Dist::Zilla::App::Command::perltidy - perltidy a dist
-
-=head1 perltidyrc
-
-=head2 dzil config
-
-In your global dzil setting (which is '~/.dzil' or '~/.dzil/config.ini'), you can config the
- perltidyrc like:
-
-    [PerlTidy]
-    perltidyrc = /home/fayland/somewhere/.perltidyrc
-
-=head2 ENV PERLTIDYRC
-
-If you do not config the dzil, we will fall back to ENV PERLTIDYRC
-
-    export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
-
-=head1 AUTHOR
-
-Fayland Lam, C<< E<lt>fayland@gmail.comE<gt> >>
-
-=head1 COPYRIGHT
-
-Copyright 2009, Fayland Lam.
-
-This program is free software; you may redistribute it and/or modify it under
-the same terms as Perl itself.
-
-
-__END__

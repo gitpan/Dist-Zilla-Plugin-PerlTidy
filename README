@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 VERSION
-    version 0.07
+    version 0.08
 
 SYNOPSIS
         # dist.ini
@@ -12,6 +12,23 @@ SYNOPSIS
         [PerlTidy]
         perltidyrc = xt/.perltidyrc
 
+  perltidyrc
+   dist.ini
+        [PerlTidy]
+        perltidyrc = xt/.perltidyrc
+
+   dzil config
+    In your global dzil setting (which is '~/.dzil' or
+    '~/.dzil/config.ini'), you can config the perltidyrc like:
+
+        [PerlTidy]
+        perltidyrc = /home/fayland/somewhere/.perltidyrc
+
+   ENV PERLTIDYRC
+    If you do not config like above, we will fall back to ENV PERLTIDYRC
+
+        export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
+
 AUTHOR
       Fayland Lam <fayland@gmail.com>
 
@@ -20,35 +37,4 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as perl itself.
-
-NAME
-    Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
-
-perltidyrc
-  dist.ini
-        [PerlTidy]
-        perltidyrc = xt/.perltidyrc
-
-  dzil config
-    In your global dzil setting (which is '~/.dzil' or
-    '~/.dzil/config.ini'), you can config the perltidyrc like:
-
-        [PerlTidy]
-        perltidyrc = /home/fayland/somewhere/.perltidyrc
-
-  ENV PERLTIDYRC
-    If you do not config like above, we will fall back to ENV PERLTIDYRC
-
-        export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
-
-AUTHOR
-    Fayland Lam, "<fayland@gmail.com>"
-
-COPYRIGHT
-    Copyright 2009, Fayland Lam.
-
-    This program is free software; you may redistribute it and/or modify it
-    under the same terms as Perl itself.
-
-    __END__
 
