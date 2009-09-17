@@ -1,5 +1,5 @@
 package Dist::Zilla::App::Command::perltidy;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use strict;
 use warnings;
@@ -60,7 +60,7 @@ Dist::Zilla::App::Command::perltidy - perltidy your dist
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -87,7 +87,7 @@ Dist::Zilla::App::Command::perltidy - perltidy a dist
 
 =head2 dzil config
 
-In your global dzil setting (which is '~/.dzil' or '~/.dzil/config'), you can config the
+In your global dzil setting (which is '~/.dzil' or '~/.dzil/config.ini'), you can config the
  perltidyrc like:
 
     [PerlTidy]

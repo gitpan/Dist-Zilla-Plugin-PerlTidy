@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::PerlTidy;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 # ABSTRACT: PerlTidy in Dist::Zilla
 
@@ -70,7 +70,7 @@ Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -105,7 +105,7 @@ Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head2 dzil config
 
-In your global dzil setting (which is '~/.dzil' or '~/.dzil/config'), you can config the
+In your global dzil setting (which is '~/.dzil' or '~/.dzil/config.ini'), you can config the
  perltidyrc like:
 
     [PerlTidy]

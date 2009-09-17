@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 VERSION
-    version 0.06
+    version 0.07
 
 SYNOPSIS
         # dist.ini
@@ -30,8 +30,8 @@ perltidyrc
         perltidyrc = xt/.perltidyrc
 
   dzil config
-    In your global dzil setting (which is '~/.dzil' or '~/.dzil/config'),
-    you can config the perltidyrc like:
+    In your global dzil setting (which is '~/.dzil' or
+    '~/.dzil/config.ini'), you can config the perltidyrc like:
 
         [PerlTidy]
         perltidyrc = /home/fayland/somewhere/.perltidyrc
