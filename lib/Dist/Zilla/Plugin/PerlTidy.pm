@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::PerlTidy;
-our $VERSION = '0.08';
+$Dist::Zilla::Plugin::PerlTidy::VERSION = '0.08_01';
 
 # ABSTRACT: PerlTidy in Dist::Zilla
 
@@ -11,12 +11,12 @@ has 'perltidyrc' => ( is => 'rw' );
 sub munge_file {
     my ( $self, $file ) = @_;
 
-    return $self->munge_perl($file) if $file->name    =~ /\.(?:pm|pl|t)$/i;
-    return $self->munge_perl($file) if $file->content =~ /^#!perl(?:$|\s)/;
+    return $self->_munge_perl($file) if $file->name    =~ /\.(?:pm|pl|t)$/i;
+    return $self->_munge_perl($file) if $file->content =~ /^#!perl(?:$|\s)/;
     return;
 }
 
-sub munge_perl {
+sub _munge_perl {
     my ( $self, $file ) = @_;
 
     my $content = $file->content;
@@ -27,16 +27,6 @@ sub munge_perl {
             $perltidyrc = $self->{perltidyrc};
         } else {
             warn 'perltidyrc ' . $self->{perltidyrc} . " is not found\n";
-        }
-    } elsif ( my $config
-        = $self->zilla->dzil_app->config_for('Dist::Zilla::Plugin::PerlTidy')
-        ) {
-        if ( exists $config->{perltidyrc} ) {
-            if ( -e $config->{perltidyrc} ) {
-                $perltidyrc = $config->{perltidyrc};
-            } else {
-                warn "perltidyrc $config->{perltidyrc} is not found\n";
-            }
         }
     }
 
@@ -63,13 +53,15 @@ no Moose;
 
 __END__
 
+=pod
+
 =head1 NAME
 
 Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head1 VERSION
 
-version 0.08
+version 0.08_01
 
 =head1 SYNOPSIS
 
@@ -87,27 +79,31 @@ version 0.08
     [PerlTidy]
     perltidyrc = xt/.perltidyrc
 
-=head3 dzil config
-
-In your global dzil setting (which is '~/.dzil' or '~/.dzil/config.ini'), you can config the
- perltidyrc like:
-
-    [PerlTidy]
-    perltidyrc = /home/fayland/somewhere/.perltidyrc
-
 =head3 ENV PERLTIDYRC
 
 If you do not config like above, we will fall back to ENV PERLTIDYRC
 
     export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
 
-=head1 AUTHOR
+=head1 METHODS
+
+=head2 munge_file
+
+Implements the required munge_file method for the
+L<Dist::Zilla::Role::FileMunger> role, munging each Perl file it finds.
+Files whose names do not end in C<.pm>, C<.pl>, or C<.t>, or whose contents
+do not begin with C<#!perl> are left alone.
+
+=head1 AUTHORS
 
   Fayland Lam <fayland@gmail.com>
+  Mark Gardner <mjgardner@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by Fayland Lam.
+This software is copyright (c) 2010 by Fayland Lam.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as perl itself.
+
+=cut

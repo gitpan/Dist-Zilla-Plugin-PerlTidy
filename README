@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 VERSION
-    version 0.08
+    version 0.08_01
 
 SYNOPSIS
         # dist.ini
@@ -17,23 +17,24 @@ SYNOPSIS
         [PerlTidy]
         perltidyrc = xt/.perltidyrc
 
-   dzil config
-    In your global dzil setting (which is '~/.dzil' or
-    '~/.dzil/config.ini'), you can config the perltidyrc like:
-
-        [PerlTidy]
-        perltidyrc = /home/fayland/somewhere/.perltidyrc
-
    ENV PERLTIDYRC
     If you do not config like above, we will fall back to ENV PERLTIDYRC
 
         export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
 
-AUTHOR
+METHODS
+  munge_file
+    Implements the required munge_file method for the
+    Dist::Zilla::Role::FileMunger role, munging each Perl file it finds.
+    Files whose names do not end in ".pm", ".pl", or ".t", or whose contents
+    do not begin with "#!perl" are left alone.
+
+AUTHORS
       Fayland Lam <fayland@gmail.com>
+      Mark Gardner <mjgardner@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2009 by Fayland Lam.
+    This software is copyright (c) 2010 by Fayland Lam.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as perl itself.

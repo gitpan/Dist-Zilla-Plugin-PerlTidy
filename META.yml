@@ -2,17 +2,21 @@
 abstract: 'PerlTidy in Dist::Zilla'
 author:
   - 'Fayland Lam <fayland@gmail.com>'
-generated_by: 'Dist::Zilla::Plugin::MetaYAML version 1.092450'
+  - 'Mark Gardner <mjgardner@cpan.org>'
+build_requires: {}
+configure_requires:
+  ExtUtils::MakeMaker: 6.31
+generated_by: 'Dist::Zilla version 2.100880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Dist-Zilla-Plugin-PerlTidy
 requires:
-  Dist::Zilla: 1.092450
+  Dist::Zilla: 2.100880
   File::Copy: 0
   File::Next: 0
   Perl::Tidy: 0
 resources:
-  repository: http://github.com/fayland/dist-zilla-plugin-perltidy/tree
-version: 0.08
+  repository: http://github.com/fayland/dist-zilla-plugin-perltidy
+version: 0.08_01
