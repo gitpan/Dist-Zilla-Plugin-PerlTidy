@@ -1,5 +1,8 @@
 package Dist::Zilla::App::Command::perltidy;
-$Dist::Zilla::App::Command::perltidy::VERSION = '0.08_01';
+
+BEGIN {
+    $Dist::Zilla::App::Command::perltidy::VERSION = '0.09';
+}
 
 use strict;
 use warnings;
@@ -12,19 +15,21 @@ sub abstract {'perltidy your dist'}
 sub execute {
     my ( $self, $opt, $arg ) = @_;
 
+    # use perltidyrc from command line or from config
     my $perltidyrc;
-    if ( scalar @$arg and -e $arg->[0] ) {
+    if ( scalar @$arg and -r $arg->[0] ) {
         $perltidyrc = $arg->[0];
     } else {
-        my $config = $self->app->config_for('Dist::Zilla::Plugin::PerlTidy');
-        if ( exists $config->{perltidyrc} ) {
-            if ( -e $config->{perltidyrc} ) {
-                $perltidyrc = $config->{perltidyrc};
-            } else {
-                warn "perltidyrc $config->{perltidyrc} is not found\n";
-            }
+        my $plugin = $self->zilla->plugin_named('PerlTidy');
+        if ( defined $plugin->perltidyrc ) {
+            $perltidyrc = $plugin->perltidyrc;
         }
-        $perltidyrc ||= $ENV{PERLTIDYRC};
+    }
+
+    # Verify that file specified is readable
+    unless ( $perltidyrc and -r $perltidyrc ) {
+        $self->zilla->log_fatal(
+            [ "specified perltidyrc is not readable: %s", $perltidyrc ] );
     }
 
     # make Perl::Tidy happy
@@ -41,7 +46,7 @@ sub execute {
         Perl::Tidy::perltidy(
             source      => $file,
             destination => $tidyfile,
-            perltidyrc  => $perltidyrc,
+            ( $perltidyrc ? ( perltidyrc => $perltidyrc ) : () ),
         );
         File::Copy::move( $tidyfile, $file );
     }
@@ -61,29 +66,30 @@ Dist::Zilla::App::Command::perltidy - perltidy your dist
 
 =head1 VERSION
 
-version 0.08_01
+version 0.09
 
-=head1 SYNOPSIS
+=head2 SYNOPSIS
 
     $ dzil perltidy
     # OR
     $ dzil perltidy .myperltidyrc
 
-=head2 perltidyrc
+=head2 CONFIGURATION
 
-=head3 dzil config
-
-In your global dzil setting (which is '~/.dzil' or '~/.dzil/config.ini'), you can config the
- perltidyrc like:
+In your global dzil setting (which is '~/.dzil' or '~/.dzil/config.ini'),
+you can config the perltidyrc like:
 
     [PerlTidy]
     perltidyrc = /home/fayland/somewhere/.perltidyrc
 
-=head3 ENV PERLTIDYRC
+=head2 DEFAULTS
 
-If you do not config the dzil, we will fall back to ENV PERLTIDYRC
+If you do not specify a specific perltidyrc in dist.ini it will try to use
+the same defaults as Perl::Tidy.
 
-    export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
+=head2 SEE ALSO
+
+L<Perl::Tidy>
 
 =head1 AUTHORS
 
@@ -95,6 +101,6 @@ If you do not config the dzil, we will fall back to ENV PERLTIDYRC
 This software is copyright (c) 2010 by Fayland Lam.
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
 
 =cut

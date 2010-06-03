@@ -2,25 +2,7 @@ NAME
     Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 VERSION
-    version 0.08_01
-
-SYNOPSIS
-        # dist.ini
-        [PerlTidy]
-
-        # or
-        [PerlTidy]
-        perltidyrc = xt/.perltidyrc
-
-  perltidyrc
-   dist.ini
-        [PerlTidy]
-        perltidyrc = xt/.perltidyrc
-
-   ENV PERLTIDYRC
-    If you do not config like above, we will fall back to ENV PERLTIDYRC
-
-        export PERLTIDYRC=/home/fayland/somwhere2/.perltidyrc
+    version 0.09
 
 METHODS
   munge_file
@@ -28,6 +10,21 @@ METHODS
     Dist::Zilla::Role::FileMunger role, munging each Perl file it finds.
     Files whose names do not end in ".pm", ".pl", or ".t", or whose contents
     do not begin with "#!perl" are left alone.
+
+  SYNOPSIS
+        # dist.ini
+        [PerlTidy]
+
+        # or
+        [PerlTidy]
+        perltidyrc = xt/.perltidyrc
+
+  DEFAULTS
+    If you do not specify a specific perltidyrc in dist.ini it will try to
+    use the same defaults as Perl::Tidy.
+
+  SEE ALSO
+    Perl::Tidy
 
 AUTHORS
       Fayland Lam <fayland@gmail.com>
@@ -37,5 +34,5 @@ COPYRIGHT AND LICENSE
     This software is copyright (c) 2010 by Fayland Lam.
 
     This is free software; you can redistribute it and/or modify it under
-    the same terms as perl itself.
+    the same terms as the Perl 5 programming language system itself.
 
