@@ -1,7 +1,7 @@
 package Dist::Zilla::App::Command::perltidy;
 
 BEGIN {
-    $Dist::Zilla::App::Command::perltidy::VERSION = '0.09';
+    $Dist::Zilla::App::Command::perltidy::VERSION = '0.10';
 }
 
 use strict;
@@ -66,7 +66,7 @@ Dist::Zilla::App::Command::perltidy - perltidy your dist
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head2 SYNOPSIS
 
@@ -93,12 +93,21 @@ L<Perl::Tidy>
 
 =head1 AUTHORS
 
-  Fayland Lam <fayland@gmail.com>
-  Mark Gardner <mjgardner@cpan.org>
+=over 4
+
+=item *
+
+Fayland Lam <fayland@gmail.com>
+
+=item *
+
+Mark Gardner <mjgardner@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Fayland Lam.
+This software is copyright (c) 2011 by Fayland Lam.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,0 +1,42 @@
+{
+   "abstract" : "PerlTidy in Dist::Zilla",
+   "author" : [
+      "Fayland Lam <fayland@gmail.com>",
+      "Mark Gardner <mjgardner@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.200012, CPAN::Meta::Converter version 2.102400",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Dist-Zilla-Plugin-PerlTidy",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.30"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Dist::Zilla" : "2.100880",
+            "File::Copy" : 0,
+            "File::Next" : 0,
+            "Perl::Tidy" : 0
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/fayland/dist-zilla-plugin-perltidy.git",
+         "web" : "http://github.com/fayland/dist-zilla-plugin-perltidy"
+      }
+   },
+   "version" : "0.10"
+}
+
