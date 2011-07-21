@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::PerlTidy;
 
 BEGIN {
-    $Dist::Zilla::Plugin::PerlTidy::VERSION = '0.10';
+    $Dist::Zilla::Plugin::PerlTidy::VERSION = '0.11';
 }
 
 # ABSTRACT: PerlTidy in Dist::Zilla
@@ -22,6 +22,7 @@ sub munge_file {
 sub _munge_perl {
     my ( $self, $file ) = @_;
 
+    return if ref($file) eq 'Dist::Zilla::File::FromCode';
     my $source = $file->content;
 
     my $perltidyrc;
@@ -45,9 +46,7 @@ sub _munge_perl {
         ( $perltidyrc ? ( perltidyrc => $perltidyrc ) : () ),
     );
 
-    ref($file) eq 'Dist::Zilla::File::FromCode'
-        ? $file->code($destination)
-        : $file->content($destination);
+    $file->content($destination);
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -65,7 +64,7 @@ Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 METHODS
 

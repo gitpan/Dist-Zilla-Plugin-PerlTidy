@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
     'File::Next' => '0',
     'Perl::Tidy' => '0'
   },
-  'VERSION' => '0.10',
+  'VERSION' => '0.11',
   'test' => {
     'TESTS' => 't/*.t'
   }
