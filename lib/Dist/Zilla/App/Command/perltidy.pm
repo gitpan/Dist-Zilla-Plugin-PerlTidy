@@ -1,7 +1,7 @@
 package Dist::Zilla::App::Command::perltidy;
 
 BEGIN {
-    $Dist::Zilla::App::Command::perltidy::VERSION = '0.11';
+    $Dist::Zilla::App::Command::perltidy::VERSION = '0.12';
 }
 
 use strict;
@@ -21,15 +21,18 @@ sub execute {
         $perltidyrc = $arg->[0];
     } else {
         my $plugin = $self->zilla->plugin_named('PerlTidy');
-        if ( defined $plugin->perltidyrc ) {
+        if ( defined $plugin and defined $plugin->perltidyrc ) {
             $perltidyrc = $plugin->perltidyrc;
         }
     }
 
-    # Verify that file specified is readable
-    unless ( $perltidyrc and -r $perltidyrc ) {
+    # Verify that if a file is specified it is readable
+    if ( defined $perltidyrc and not -r $perltidyrc ) {
         $self->zilla->log_fatal(
-            [ "specified perltidyrc is not readable: %s", $perltidyrc ] );
+            [   "specified perltidyrc is not readable: %s ,\nNote: ~ and other shell expansions are not applicable",
+                $perltidyrc
+            ]
+        );
     }
 
     # make Perl::Tidy happy
@@ -66,7 +69,7 @@ Dist::Zilla::App::Command::perltidy - perltidy your dist
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head2 SYNOPSIS
 
