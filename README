@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 VERSION
-    version 0.12
+    version 0.13
 
 METHODS
   munge_file
@@ -31,8 +31,10 @@ AUTHORS
 
     *   Mark Gardner <mjgardner@cpan.org>
 
+    *   Kent Fredric <kentfredric@gmail.com>
+
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Fayland Lam.
+    This software is copyright (c) 2013 by Fayland Lam.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

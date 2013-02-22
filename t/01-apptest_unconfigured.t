@@ -42,3 +42,4 @@ ok( dircopy( $root, $bdir ), "Copied directory to tmpdir" )
 }
 
 done_testing;
+

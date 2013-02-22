@@ -1,7 +1,6 @@
 package Dist::Zilla::Plugin::PerlTidy;
-
-BEGIN {
-    $Dist::Zilla::Plugin::PerlTidy::VERSION = '0.12';
+{
+    $Dist::Zilla::Plugin::PerlTidy::VERSION = '0.13';
 }
 
 # ABSTRACT: PerlTidy in Dist::Zilla
@@ -14,7 +13,7 @@ has 'perltidyrc' => ( is => 'ro' );
 sub munge_file {
     my ( $self, $file ) = @_;
 
-    return $self->_munge_perl($file) if $file->name    =~ /\.(?:pm|pl|t)$/i;
+    return $self->_munge_perl($file) if $file->name =~ /\.(?:pm|pl|t)$/i;
     return $self->_munge_perl($file) if $file->content =~ /^#!perl(?:$|\s)/;
     return;
 }
@@ -64,7 +63,7 @@ Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 METHODS
 
@@ -105,11 +104,15 @@ Fayland Lam <fayland@gmail.com>
 
 Mark Gardner <mjgardner@cpan.org>
 
+=item *
+
+Kent Fredric <kentfredric@gmail.com>
+
 =back
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Fayland Lam.
+This software is copyright (c) 2013 by Fayland Lam.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

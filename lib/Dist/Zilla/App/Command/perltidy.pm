@@ -1,7 +1,6 @@
 package Dist::Zilla::App::Command::perltidy;
-
-BEGIN {
-    $Dist::Zilla::App::Command::perltidy::VERSION = '0.12';
+{
+    $Dist::Zilla::App::Command::perltidy::VERSION = '0.13';
 }
 
 use strict;
@@ -11,6 +10,29 @@ use warnings;
 use Dist::Zilla::App -command;
 
 sub abstract {'perltidy your dist'}
+
+my $backends = {
+    vanilla => sub {
+        local @ARGV = ();
+        require Perl::Tidy;
+        return sub {
+            local @ARGV = ();
+            Perl::Tidy::perltidy(@_);
+        };
+    },
+    sweet => sub {
+        local @ARGV = ();
+        require Perl::Tidy::Sweetened;
+        return sub {
+            local @ARGV = ();
+            Perl::Tidy::Sweetened::perltidy(@_);
+        };
+    },
+};
+
+sub opt_spec {
+    [ 'backend|b=s', 'tidy backend to use', { default => 'vanilla' } ];
+}
 
 sub execute {
     my ( $self, $opt, $arg ) = @_;
@@ -35,10 +57,16 @@ sub execute {
         );
     }
 
-    # make Perl::Tidy happy
-    local @ARGV = ();
+    if ( not exists $backends->{ $opt->{backend} } ) {
+        $self->zilla->log_fatal(
+            [   "specified backend not known, known backends are: %s ",
+                join q[,], sort keys %{$backends}
+            ]
+        );
+    }
 
-    require Perl::Tidy;
+    my $tidy = $backends->{ $opt->{backend} }->();
+
     require File::Copy;
     require File::Next;
 
@@ -46,12 +74,21 @@ sub execute {
     while ( defined( my $file = $files->() ) ) {
         next unless ( $file =~ /\.(t|p[ml])$/ );    # perl file
         my $tidyfile = $file . '.tdy';
-        Perl::Tidy::perltidy(
+        $self->zilla->log_debug( [ 'Tidying %s', $file ] );
+        if ( my $pid = fork() ) {
+            waitpid $pid, 0;
+            $self->zilla->log_fatal(
+                [ 'Child exited with nonzero status: %s', $? ] )
+                if $? > 0;
+            File::Copy::move( $tidyfile, $file );
+            next;
+        }
+        $tidy->(
             source      => $file,
             destination => $tidyfile,
             ( $perltidyrc ? ( perltidyrc => $perltidyrc ) : () ),
         );
-        File::Copy::move( $tidyfile, $file );
+        exit 0;
     }
 
     return 1;
@@ -69,7 +106,7 @@ Dist::Zilla::App::Command::perltidy - perltidy your dist
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head2 SYNOPSIS
 
@@ -106,11 +143,15 @@ Fayland Lam <fayland@gmail.com>
 
 Mark Gardner <mjgardner@cpan.org>
 
+=item *
+
+Kent Fredric <kentfredric@gmail.com>
+
 =back
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Fayland Lam.
+This software is copyright (c) 2013 by Fayland Lam.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
