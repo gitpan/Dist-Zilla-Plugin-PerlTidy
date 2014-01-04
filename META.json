@@ -6,7 +6,7 @@
       "Kent Fredric <kentfredric@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.133380",
    "license" : [
       "perl_5"
    ],
@@ -32,8 +32,16 @@
          "requires" : {
             "Dist::Zilla" : "2.100880",
             "File::Copy" : "0",
-            "File::Next" : "0",
+            "Path::Iterator::Rule" : "0",
             "Perl::Tidy" : "0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "File::Spec" : "0",
+            "IO::Handle" : "0",
+            "IPC::Open3" : "0",
+            "Test::More" : "0"
          }
       }
    },
@@ -45,6 +53,13 @@
          "web" : "https://github.com/fayland/dist-zilla-plugin-perltidy"
       }
    },
-   "version" : "0.13"
+   "version" : "0.14",
+   "x_contributors" : [
+      "Alexei Znamensky <russoz@cpan.org>",
+      "Mark Gardner <gardnerm@gsicommerce.com>",
+      "Robin Smidsr\u00f8d <robin@smidsrod.no>",
+      "fayland <fayland@gmail.com>",
+      "kentfredric <kentfredric+gravitar@gmail.com>"
+   ]
 }
 

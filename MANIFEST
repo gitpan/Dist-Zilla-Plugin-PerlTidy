@@ -18,3 +18,4 @@ t/apptest/02_basic_config/dist.ini
 t/apptest/03_bad_config/dist.ini
 t/release-pod-coverage.t
 t/release-pod-syntax.t
+test.pl

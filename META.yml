@@ -4,11 +4,15 @@ author:
   - 'Fayland Lam <fayland@gmail.com>'
   - 'Mark Gardner <mjgardner@cpan.org>'
   - 'Kent Fredric <kentfredric@gmail.com>'
-build_requires: {}
+build_requires:
+  File::Spec: 0
+  IO::Handle: 0
+  IPC::Open3: 0
+  Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.133380'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,8 +21,14 @@ name: Dist-Zilla-Plugin-PerlTidy
 requires:
   Dist::Zilla: 2.100880
   File::Copy: 0
-  File::Next: 0
+  Path::Iterator::Rule: 0
   Perl::Tidy: 0
 resources:
   repository: git://github.com/fayland/dist-zilla-plugin-perltidy.git
-version: 0.13
+version: 0.14
+x_contributors:
+  - 'Alexei Znamensky <russoz@cpan.org>'
+  - 'Mark Gardner <gardnerm@gsicommerce.com>'
+  - 'Robin Smidsrød <robin@smidsrod.no>'
+  - 'fayland <fayland@gmail.com>'
+  - 'kentfredric <kentfredric+gravitar@gmail.com>'
