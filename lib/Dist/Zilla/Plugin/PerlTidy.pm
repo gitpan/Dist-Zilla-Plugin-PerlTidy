@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::PerlTidy;
 {
-    $Dist::Zilla::Plugin::PerlTidy::VERSION = '0.14';
+    $Dist::Zilla::Plugin::PerlTidy::VERSION = '0.15';
 }
 
 # ABSTRACT: PerlTidy in Dist::Zilla
@@ -65,7 +65,7 @@ Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 METHODS
 

@@ -1,6 +1,6 @@
 package Dist::Zilla::App::Command::perltidy;
 {
-    $Dist::Zilla::App::Command::perltidy::VERSION = '0.14';
+    $Dist::Zilla::App::Command::perltidy::VERSION = '0.15';
 }
 
 use strict;
@@ -136,7 +136,7 @@ Dist::Zilla::App::Command::perltidy - perltidy your dist
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head2 SYNOPSIS
 

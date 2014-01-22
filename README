@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 VERSION
-    version 0.14
+    version 0.15
 
 METHODS
   munge_file
