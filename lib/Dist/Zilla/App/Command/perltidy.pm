@@ -1,5 +1,5 @@
 package Dist::Zilla::App::Command::perltidy;
-$Dist::Zilla::App::Command::perltidy::VERSION = '0.16';
+$Dist::Zilla::App::Command::perltidy::VERSION = '0.17';
 use strict;
 use warnings;
 
@@ -86,6 +86,7 @@ sub execute {
     );
     $rule->file->nonempty;
     $rule->file->not_binary;
+    $rule->file->perl_file;
 
     # $rule->file->line_match(qr/\s\n/);
 
@@ -97,7 +98,6 @@ sub execute {
     );
 
     while ( my $file = $next->() ) {
-        next unless ( $file =~ /\.(t|p[ml])$/ );    # perl file
         my $tidyfile = $file . '.tdy';
         $self->zilla->log_debug( [ 'Tidying %s', $file ] );
         if ( my $pid = fork() ) {
@@ -133,7 +133,7 @@ Dist::Zilla::App::Command::perltidy - perltidy your dist
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head2 SYNOPSIS
 

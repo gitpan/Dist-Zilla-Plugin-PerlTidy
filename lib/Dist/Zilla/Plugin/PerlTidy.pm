@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::PerlTidy;
-$Dist::Zilla::Plugin::PerlTidy::VERSION = '0.16';
+$Dist::Zilla::Plugin::PerlTidy::VERSION = '0.17';
 
 # ABSTRACT: PerlTidy in Dist::Zilla
 
@@ -13,7 +13,7 @@ sub munge_file {
 
     return $self->_munge_perl($file) if $file->name =~ /\.(?:pm|pl|t)$/i;
     return if -B $file->name;    # do not try to read binary file
-    return $self->_munge_perl($file) if $file->content =~ /^#!perl(?:$|\s)/;
+    return $self->_munge_perl($file) if $file->content =~ /^#!.*\bperl\b/;
     return;
 }
 
@@ -64,7 +64,7 @@ Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 METHODS
 

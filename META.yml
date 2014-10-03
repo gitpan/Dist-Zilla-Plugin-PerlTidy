@@ -25,10 +25,11 @@ requires:
   Perl::Tidy: 0
 resources:
   repository: git://github.com/fayland/dist-zilla-plugin-perltidy.git
-version: 0.16
+version: 0.17
 x_contributors:
   - 'Alexei Znamensky <russoz@cpan.org>'
   - 'Mark Gardner <gardnerm@gsicommerce.com>'
   - 'Robin Smidsrød <robin@smidsrod.no>'
+  - 'Steven Lee <stevenwh.lee@gmail.com>'
   - 'fayland <fayland@gmail.com>'
   - 'kentfredric <kentfredric+gravitar@gmail.com>'
