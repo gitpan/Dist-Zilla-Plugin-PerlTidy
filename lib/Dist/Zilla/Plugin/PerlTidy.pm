@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::PerlTidy;
-$Dist::Zilla::Plugin::PerlTidy::VERSION = '0.17';
+$Dist::Zilla::Plugin::PerlTidy::VERSION = '0.18';
 
 # ABSTRACT: PerlTidy in Dist::Zilla
 
@@ -21,6 +21,11 @@ sub _munge_perl {
     my ( $self, $file ) = @_;
 
     return if ref($file) eq 'Dist::Zilla::File::FromCode';
+    return
+        if $file->name
+        and $file->name eq 't/00-compile.t'
+        ;    # simply skip Dist::Zilla::Plugin::Test::Compile (RT 88601)
+
     my $source = $file->content;
 
     my $perltidyrc;
@@ -64,7 +69,7 @@ Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head1 VERSION
 
-version 0.17
+version 0.18
 
 =head1 METHODS
 
