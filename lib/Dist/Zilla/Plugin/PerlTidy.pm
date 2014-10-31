@@ -1,12 +1,23 @@
 package Dist::Zilla::Plugin::PerlTidy;
-$Dist::Zilla::Plugin::PerlTidy::VERSION = '0.18';
+$Dist::Zilla::Plugin::PerlTidy::VERSION = '0.19';
 
 # ABSTRACT: PerlTidy in Dist::Zilla
 
 use Moose;
-with 'Dist::Zilla::Role::FileMunger';
+with(
+    'Dist::Zilla::Role::FileMunger',
+    'Dist::Zilla::Role::FileFinderUser' => {
+        default_finders => [ ':InstallModules', ':ExecFiles', ':TestFiles' ],
+    },
+);
 
 has 'perltidyrc' => ( is => 'ro' );
+
+sub munge_files {
+    my ($self) = @_;
+
+    $self->munge_file($_) for @{ $self->found_files };
+}
 
 sub munge_file {
     my ( $self, $file ) = @_;
@@ -69,7 +80,7 @@ Dist::Zilla::Plugin::PerlTidy - PerlTidy in Dist::Zilla
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 METHODS
 

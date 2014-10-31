@@ -19,13 +19,13 @@ meta-spec:
   version: '1.4'
 name: Dist-Zilla-Plugin-PerlTidy
 requires:
-  Dist::Zilla: '2.100880'
+  Dist::Zilla: '5.0'
   File::Copy: '0'
   Path::Iterator::Rule: '0'
   Perl::Tidy: '0'
 resources:
   repository: git://github.com/fayland/dist-zilla-plugin-perltidy.git
-version: '0.18'
+version: '0.19'
 x_contributors:
   - 'Alexei Znamensky <russoz@cpan.org>'
   - 'Mark Gardner <gardnerm@gsicommerce.com>'

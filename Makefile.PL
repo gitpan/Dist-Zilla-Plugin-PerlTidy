@@ -20,7 +20,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::PerlTidy",
   "PREREQ_PM" => {
-    "Dist::Zilla" => "2.100880",
+    "Dist::Zilla" => "5.0",
     "File::Copy" => 0,
     "Path::Iterator::Rule" => 0,
     "Perl::Tidy" => 0
@@ -31,7 +31,7 @@ my %WriteMakefileArgs = (
     "IPC::Open3" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.18",
+  "VERSION" => "0.19",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -39,7 +39,7 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Dist::Zilla" => "2.100880",
+  "Dist::Zilla" => "5.0",
   "File::Copy" => 0,
   "File::Spec" => 0,
   "IO::Handle" => 0,
